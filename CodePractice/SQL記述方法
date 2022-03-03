@@ -90,8 +90,26 @@ users;
 　   -  CREATE TABLE テーブル名 (カラム名1 カラム型,カラム名2, カラム型,...,カラム名n, カラム型);
 　      でテーブル作成
 　   -  DESC テーブル名; テーブル内のカラムを確認する
+　   
+　   （INSERT文：挿入）
 　   -  INSERT INTO テーブル名 (カラム名1, カラム名2, ...) VALUES (値1, 値2, ...);  テーブルへデータを挿入する
+　   （SELECT文：検索）
 　   -  SELECT * FROM テーブル名; 保存したデータをテーブル内に表示させる方法
 　   　（*はワイルドカードであり、全てのカラムを表示させる）
 　   -  SELECT カラム名1, カラム名2, ..., カラム名n FROM テーブル名; で必要なカラム名の値のみ抽出
-　   -
+　   (WHERE文：条件)
+　   -　SELECT * FROM テーブル名 WHERE カラム名 >= 32（条件式）;　条件を指定してデータを表示する
+　   -　SELECT * FROM テーブル名 WHERE カラム名='東京都' AND age >= 35;　「東京都」で、なおかつ「35歳以上の人」などの『AND』による条件追加
+　   -  SELECT * FROM テーブル名 WHERE カラム名='東京都' OR age >= 35; 　「東京都」、もしくは「35歳以上の人」を検索するには、「OR」を使用
+　   （UPDATE：更新）
+　   -  UPDATE テーブル名 SET カラム名1 = 値1, カラム名2 = 値2, ..., カラム名n = 値n WHERE 条件文; 
+　　   　(ex)UPDATE list SET age = 25 WHERE id = 3;　meiboテーブルで「id = 3」レコードのageを25に変更
+　         ↓
+　         その後 SELECT * FROM list WHERE id = 3;　でWHERE文によりid3レコードを検索し結果を確認
+　   （DELETE分：削除）
+　   -　DELETE FROM テーブル名 WHERE 条件文; 
+　     (ex)「DELETE FROM list WHERE id > 7;」と入力することで、idが7より大きいデータが削除されます。
+　         ↓
+　         その後、select * from list;　で全件表示することで確認できる
+　     
+　   -  間違えて削除してしまった文はINSERT文を使い元に戻す必要がある    
